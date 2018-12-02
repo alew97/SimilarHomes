@@ -1,0 +1,35 @@
+.intro {
+    text-align: center
+}
+
+.instructions {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+}
+
+.form-card {
+    max-width: 500px;
+    min-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-text {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.right-entry {
+    margin-right: 5%;
+}
+
+.left-entry {
+    margin-left: 5%;
+}
+
+.input-label {
+    margin-top: 10%;
+}

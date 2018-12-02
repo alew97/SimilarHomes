@@ -1,0 +1,55 @@
+<div class="intro">
+  <h2>Welcome to Similar Homes!</h2>
+  <p class="instructions">Using the form below, you will be able to search our database for all homes that are "similar" to your target home based on the values you pass in.
+  Please note that the fields 'Target Latitude' and 'Target Longitude' are the only two required fields. If you do not have any specifications for
+  Latitude or Longitude Distance Away, then please leave those fields blank. Min/Max Bedrooms, Bathrooms and Square Footage are also optional.
+  The results of your query will be displayed in a table below! Please click the panels for more information on the homes.</p>
+
+  <mat-card class="form-card">
+    <mat-card-header>
+      <div class="title-text">Please enter your specifications</div>
+    </mat-card-header>
+
+    <form>
+      <p class="input-label">Target Home</p>
+      <mat-form-field class="right-entry">
+        <input matInput placeholder="Target Home Latitude" name = "targetLatitude" [(ngModel)] = "home.targetLatitude" required>
+      </mat-form-field>
+      <mat-form-field class="left-entry">
+        <input matInput placeholder="Target Home Longitude" name = "targetLongitude" [(ngModel)] = "home.targetLongitude" required>
+      </mat-form-field>
+      <br>
+      <p class="input-label">Distance Away</p>
+      <mat-form-field class="right-entry">
+        <input matInput placeholder="Latitude Away" name = "latitude" [(ngModel)] = "home.latitudeAway">
+      </mat-form-field>
+      <mat-form-field class="left-entry">
+        <input matInput placeholder="Longitude Away" name = "longitude" [(ngModel)] = "home.longitudeAway">
+      </mat-form-field>
+      <br>
+      <p class="input-label">Bathrooms</p>
+      <mat-form-field class="right-entry">
+        <input matInput placeholder="Minimum Bathrooms" name = "minBaths" [(ngModel)] = "home.minBath">
+      </mat-form-field>
+      <mat-form-field class="left-entry">
+        <input matInput placeholder="Maximum Bathrooms" name = "maxBaths" [(ngModel)] = "home.maxBath">
+      </mat-form-field>
+      <br>
+      <p class="input-label">Bedrooms</p>
+      <mat-form-field class="right-entry">
+        <input matInput placeholder="Maximum Bedrooms" name = "minBed" [(ngModel)] = "home.minBed">
+      </mat-form-field>
+      <mat-form-field class="left-entry">
+        <input matInput placeholder="Minimum Bedrooms" name = "maxBed" [(ngModel)] = "home.maxBed">
+      </mat-form-field>
+      <br>
+      <p class="input-label">Square Footage</p>
+      <mat-form-field class="right-entry">
+        <input matInput placeholder="Minimum Square Footage" name = "minFeet" [(ngModel)] = "home.minFeet">
+      </mat-form-field>
+      <mat-form-field class="left-entry">
+        <input matInput placeholder="Maximum Square Footage" name = "maxFeet" [(ngModel)] = "home.maxFeet">
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
