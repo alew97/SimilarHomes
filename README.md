@@ -5,8 +5,8 @@ The tech stack I chose for this project is MEAN: MongoDB, Express, Angular and N
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 To Run Locally: 
-- You must have all entries in listings.csv imported into MongoDb using the mongoimport command. The db name should be 'homes' and the entries will go into a collection that is also named 'homes'. If the entries are correctly imported, you should be able to call 'db.homes.find()' in the Mongo shell and the entries should appear. 
-- You must have the Mongo daemon and Mongo shell running. Please go to the directory where MongoDb lives on your machine and run 'mongod' or '~/mongodb/bin/mongod' if that does not work. Open a new command line window and go to the same directory and run 'mongo' or '~/mongodb/bin/mongo'. 
+- You must have all entries in listings.csv imported into MongoDb using the mongoimport command. The db name should be 'homes' and the entries will go into a collection that is also named 'homes'. If the entries are correctly imported, you should be able to call 'db.homes.find()' in the Mongo shell and the entries should appear. Listings.csv must also be in the ~/mongodb/bin folder. 
+- You must have the Mongo daemon and Mongo shell running. Please go to the directory where MongoDb lives on your machine and run 'mongod' or ' ~/mongodb/bin/mongod ' if that does not work. Open a new command line window and go to the same directory and run 'mongo' or ' ~/mongodb/bin/mongo '. 
 - The server side must be running. Please cd into the 'server' directory and run 'node app.js'
 - You are now ready to spin up the app! Please run 'npm start' inside the SimilarHomes directory. 
 
