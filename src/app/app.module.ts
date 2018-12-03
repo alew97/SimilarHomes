@@ -2,17 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RootComponent } from './root/root.component';
-import { ShowHomesComponent } from './show-homes/show-homes.component';
 
 @NgModule({
   declarations: [
-    RootComponent,
-    ShowHomesComponent
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,9 @@ import { ShowHomesComponent } from './show-homes/show-homes.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [RootComponent]

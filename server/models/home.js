@@ -12,7 +12,8 @@ const homeSchema = new Schema({
   minBed: { type: Number }, 
   maxBed: { type: Number },
   minFeet: { type: Number },
-  maxFeet: { type: Number }
+  maxFeet: { type: Number }, 
+  pageNumber: { type: Number, required: true }
 }, { collection : 'homes' });
 
 homeSchema.plugin(mongoosePaginate);

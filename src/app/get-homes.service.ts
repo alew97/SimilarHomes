@@ -7,8 +7,10 @@ import { Home } from '../app/models/home'
 })
 export class GetHomesService {
 
+  public currentPage: number;
+
   constructor(private http: HttpClient){
- 
+    this.currentPage = 1;
   }
 
   getHomes(home: Home) {
@@ -22,7 +24,8 @@ export class GetHomesService {
       minBed: home.minBed,
       maxBed: home.maxBed,
       minFeet: home.minFeet,
-      maxFeet: home.maxFeet
+      maxFeet: home.maxFeet,
+      pageNumber: home.pageNumber
     })
   }
 }

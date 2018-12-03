@@ -11,45 +11,95 @@
     </mat-card-header>
 
     <form>
-      <p class="input-label">Target Home</p>
-      <mat-form-field class="right-entry">
-        <input matInput placeholder="Target Home Latitude" name = "targetLatitude" [(ngModel)] = "home.targetLatitude" required>
-      </mat-form-field>
-      <mat-form-field class="left-entry">
-        <input matInput placeholder="Target Home Longitude" name = "targetLongitude" [(ngModel)] = "home.targetLongitude" required>
-      </mat-form-field>
-      <br>
-      <p class="input-label">Distance Away</p>
-      <mat-form-field class="right-entry">
-        <input matInput placeholder="Latitude Away" name = "latitude" [(ngModel)] = "home.latitudeAway">
-      </mat-form-field>
-      <mat-form-field class="left-entry">
-        <input matInput placeholder="Longitude Away" name = "longitude" [(ngModel)] = "home.longitudeAway">
-      </mat-form-field>
-      <br>
-      <p class="input-label">Bathrooms</p>
-      <mat-form-field class="right-entry">
-        <input matInput placeholder="Minimum Bathrooms" name = "minBaths" [(ngModel)] = "home.minBath">
-      </mat-form-field>
-      <mat-form-field class="left-entry">
-        <input matInput placeholder="Maximum Bathrooms" name = "maxBaths" [(ngModel)] = "home.maxBath">
-      </mat-form-field>
-      <br>
-      <p class="input-label">Bedrooms</p>
-      <mat-form-field class="right-entry">
-        <input matInput placeholder="Maximum Bedrooms" name = "minBed" [(ngModel)] = "home.minBed">
-      </mat-form-field>
-      <mat-form-field class="left-entry">
-        <input matInput placeholder="Minimum Bedrooms" name = "maxBed" [(ngModel)] = "home.maxBed">
-      </mat-form-field>
-      <br>
-      <p class="input-label">Square Footage</p>
-      <mat-form-field class="right-entry">
-        <input matInput placeholder="Minimum Square Footage" name = "minFeet" [(ngModel)] = "home.minFeet">
-      </mat-form-field>
-      <mat-form-field class="left-entry">
-        <input matInput placeholder="Maximum Square Footage" name = "maxFeet" [(ngModel)] = "home.maxFeet">
-      </mat-form-field>
+      <div class="question-section">
+        <p class="input-label">Target Home</p>
+        <mat-form-field class="right-entry">
+          <input matInput placeholder="Target Home Latitude" name = "targetLatitude" [(ngModel)] = "home.targetLatitude" required>
+        </mat-form-field>
+        <mat-form-field class="left-entry">
+          <input matInput placeholder="Target Home Longitude" name = "targetLongitude" [(ngModel)] = "home.targetLongitude" required>
+        </mat-form-field>
+        <br>
+      </div>
+      <div class="question-section">
+        <p class="input-label">Distance Away</p>
+        <mat-form-field class="right-entry">
+          <input matInput placeholder="Latitude Away" name = "latitude" [(ngModel)] = "home.latitudeAway">
+        </mat-form-field>
+        <mat-form-field class="left-entry">
+          <input matInput placeholder="Longitude Away" name = "longitude" [(ngModel)] = "home.longitudeAway">
+        </mat-form-field>
+        <br>
+      </div>
+      <div class="question-section">
+        <p class="input-label">Bathrooms</p>
+        <mat-form-field class="right-entry">
+          <input matInput placeholder="Minimum Bathrooms" name = "minBaths" [(ngModel)] = "home.minBath">
+        </mat-form-field>
+        <mat-form-field class="left-entry">
+          <input matInput placeholder="Maximum Bathrooms" name = "maxBaths" [(ngModel)] = "home.maxBath">
+        </mat-form-field>
+        <br>
+      </div>
+      <div class="question-section">
+        <p class="input-label">Bedrooms</p>
+        <mat-form-field class="right-entry">
+          <input matInput placeholder="Minimum Bedrooms" name = "minBed" [(ngModel)] = "home.minBed">
+        </mat-form-field>
+        <mat-form-field class="left-entry">
+          <input matInput placeholder="Maximum Bedrooms" name = "maxBed" [(ngModel)] = "home.maxBed">
+        </mat-form-field>
+        <br>
+      </div>
+      <div class="question-section">
+        <p class="input-label">Square Footage</p>
+        <mat-form-field class="right-entry">
+          <input matInput placeholder="Minimum Square Footage" name = "minFeet" [(ngModel)] = "home.minFeet">
+        </mat-form-field>
+        <mat-form-field class="left-entry">
+          <input matInput placeholder="Maximum Square Footage" name = "maxFeet" [(ngModel)] = "home.maxFeet">
+        </mat-form-field>
+      </div>
     </form>
+    <button mat-raised-button (click)=getHomes() class="get-homes-button">Get Homes!</button>
   </mat-card>
 </div>
+
+
+<mat-card class="results-table-card" *ngIf="theseHomes?.length > 0">
+  <mat-card-header class="header">
+    <div class="title-text">Similar Homes</div>
+  </mat-card-header>
+  <br>
+  <mat-card-content class="content">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let h of theseHomes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Listing ID: {{h.ListingId}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Dwelling Type: {{h.DwellingType}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        Latitude: {{h.GeoLat}}
+        <br>
+        Longitude: {{h.GeoLon}}
+        <br>
+        Number of Bathrooms: {{h.NumBaths}}
+        <br>
+        Number of Bedrooms: {{h.NumBedrooms}}
+        <br>
+        Object Id: {{h.ObjectId}}
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+  <button mat-raised-button (click)=previousPage() class="prev-page-button">
+      Previous Page
+  </button>
+  <button mat-raised-button (click)=nextPage() class="next-page-button">
+      Next Page
+  </button>
+</mat-card>
+
+<p *ngIf="theseHomes?.length == 0 && canZero" class="sorry-message">We're sorry! There are no homes that match your query.</p>

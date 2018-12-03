@@ -9,10 +9,22 @@
 }
 
 .form-card {
-    max-width: 500px;
-    min-width: 500px;
+    max-width: 40%;
+    min-width: 40%;
+    max-height: 200%;
+    min-height: 200%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.results-table-card {
+    max-width: 60%;
+    min-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    min-height: 105%;
+    margin-bottom: 5%;
 }
 
 .title-text {
@@ -20,6 +32,10 @@
     margin-right: auto;
     margin-top: 5%;
     font-size: 20px;
+}
+
+.question-section {
+    margin: -5%;
 }
 
 .right-entry {
@@ -32,4 +48,22 @@
 
 .input-label {
     margin-top: 10%;
+}
+
+.get-homes-button {
+    margin: 9%
+}
+
+.prev-page-button {
+    float: left;
+}
+
+.next-page-button {
+    float:right;
+}
+
+.sorry-message {
+    text-align: center;
+    font-size: 20;
+    margin: 10%;
 }

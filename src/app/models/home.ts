@@ -10,6 +10,7 @@ export class Home {
         this.maxBed = null;
         this.minFeet = null;
         this.maxFeet = null;
+        this.pageNumber = null;
     }
     public targetLatitude;
     public targetLongitude;
@@ -21,4 +22,5 @@ export class Home {
     public maxBed;
     public minFeet;
     public maxFeet;
+    public pageNumber;
 }

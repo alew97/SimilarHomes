@@ -9,15 +9,19 @@ import { Home } from '../models/home';
   providers: [GetHomesService]
 })
 export class RootComponent {
-
-  public home : Home;
+  public currentPage: number; 
+  public home: Home;
+  public theseHomes: any=[];
+  public canZero: Boolean; // to ensure that 'no homes match your query' message doesn't appear before the user searches
 
   constructor(private getHomesService: GetHomesService) { 
     this.home = new Home();
+    this.currentPage = 1;
   }
 
   getHomes() {
     if (this.home.targetLatitude && this.home.targetLongitude) { // target longitude and target latitude are only 2 required fields
+      this.canZero = true;
       if (this.home.minBath == null) {
         this.home.minBath = Number.MIN_VALUE
       }
@@ -36,14 +40,35 @@ export class RootComponent {
       if (this.home.maxFeet == null) {
         this.home.maxFeet = Number.MAX_VALUE
       }
+      this.home.pageNumber = 1;
       this.getHomesService.getHomes(this.home).subscribe(result => {
-        console.log('the result is ', result);
+        this.theseHomes = result['data'];
       }, error => {
         console.log('error is ', error);
       });
     } else {
       alert('You must enter values for Target Latitude and Target Longitude.');
     }
+  }
+
+  nextPage() {
+    this.currentPage = this.currentPage + 1;
+    this.home.pageNumber = this.currentPage;
+    this.getHomesService.getHomes(this.home).subscribe(result => {
+      this.theseHomes = result['data'];
+    }, error => {
+      console.log('error is ', error);
+    });
+  }
+
+  previousPage() {
+    this.currentPage = this.currentPage - 1;
+    this.home.pageNumber = this.currentPage;
+    this.getHomesService.getHomes(this.home).subscribe(result => {
+      this.theseHomes = result['data'];
+    }, error => {
+      console.log('error is ', error);
+    });
   }
 
 }

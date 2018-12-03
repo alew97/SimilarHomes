@@ -28,22 +28,24 @@ app.post('/api/homes/gethomes', (req, res) => {
             findQuery.GeoLon = req.body.targetLongitude - ((-1)*(req.body.longitudeAway))
         }
 
+        var page = req.body.pageNumber;
+
         // our configurations for pagination
         var options = {
             limit: 10,
-            page: 1
+            page: page
         }
 
-        Home.find(
-            findQuery
+        Home.paginate(
+            findQuery, options
         , function(err, home){
             if(err) throw err;
             return res.status(200).json({
                 status: 'success',
-                data: home
+                data: home.docs
             })  
         })
-        console.log('getAllPost works')
+        
     });
 })
  
