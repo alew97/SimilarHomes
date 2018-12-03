@@ -9,12 +9,12 @@ import { Home } from '../models/home';
   providers: [GetHomesService]
 })
 export class RootComponent {
-  public currentPage: number; 
+  public currentPage: number;
   public home: Home;
-  public theseHomes: any=[];
+  public theseHomes: any = [];
   public canZero: Boolean; // to ensure that 'no homes match your query' message doesn't appear before the user searches
 
-  constructor(private getHomesService: GetHomesService) { 
+  constructor(private getHomesService: GetHomesService) {
     this.home = new Home();
     this.currentPage = 1;
   }
@@ -23,22 +23,22 @@ export class RootComponent {
     if (this.home.targetLatitude && this.home.targetLongitude) { // target longitude and target latitude are only 2 required fields
       this.canZero = true;
       if (this.home.minBath == null) {
-        this.home.minBath = Number.MIN_VALUE
+        this.home.minBath = Number.MIN_VALUE;
       }
       if (this.home.maxBath == null) {
-        this.home.maxBath = Number.MAX_VALUE
+        this.home.maxBath = Number.MAX_VALUE;
       }
       if (this.home.minBed == null) {
-        this.home.minBed = Number.MIN_VALUE
+        this.home.minBed = Number.MIN_VALUE;
       }
       if (this.home.maxBed == null) {
-        this.home.maxBed = Number.MAX_VALUE
+        this.home.maxBed = Number.MAX_VALUE;
       }
       if (this.home.minFeet == null) {
-        this.home.minFeet = Number.MIN_VALUE
+        this.home.minFeet = Number.MIN_VALUE;
       }
       if (this.home.maxFeet == null) {
-        this.home.maxFeet = Number.MAX_VALUE
+        this.home.maxFeet = Number.MAX_VALUE;
       }
       this.home.pageNumber = 1;
       this.getHomesService.getHomes(this.home).subscribe(result => {

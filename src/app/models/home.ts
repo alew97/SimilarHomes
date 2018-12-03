@@ -1,5 +1,5 @@
 export class Home {
-    constructor(){
+    constructor() {
         this.targetLatitude = null;
         this.targetLongitude = null;
         this.latitudeAway = null;

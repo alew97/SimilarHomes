@@ -41,7 +41,7 @@ app.post('/api/homes/gethomes', (req, res) => {
         , function(err, home){
             if(err) throw err;
             return res.status(200).json({
-                status: 'success',
+                status: true,
                 data: home.docs
             })  
         })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Home } from '../app/models/home'
+import { Home } from '../app/models/home';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class GetHomesService {
 
   public currentPage: number;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient) {
     this.currentPage = 1;
   }
 
@@ -26,6 +26,6 @@ export class GetHomesService {
       minFeet: home.minFeet,
       maxFeet: home.maxFeet,
       pageNumber: home.pageNumber
-    })
+    });
   }
 }
