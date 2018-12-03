@@ -4,6 +4,16 @@ The tech stack I chose for this project is MEAN: MongoDB, Express, Angular and N
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
+To Run Locally: 
+- You must have all entries in listings.csv imported into MongoDb using the mongoimport command. The db name should be 'homes' and the entries will go into a collection that is also named 'homes'. If the entries are correctly imported, you should be able to call 'db.homes.find()' in the Mongo shell and the entries should appear. 
+- You must have the Mongo daemon and Mongo shell running. Please go to the directory where MongoDb lives on your machine and run 'mongod' or '~/mongodb/bin/mongod' if that does not work. Open a new command line window and go to the same directory and run 'mongo' or '~/mongodb/bin/mongo'. 
+- The server side must be running. Please cd into the 'server' directory and run 'node app.js'
+- You are now ready to spin up the app! Please run 'npm start' inside the SimilarHomes directory. 
+
+To Test:
+- You must have mocha installed globally. Please run 'npm install -g mocha'.
+- Running 'ng lint' will lint the files and 'npm test' will run the test cases I have written. 
+
 ## Considerations and Tradeoffs
 
 One of the main issues that I had while building this was how exactly I was going to implement the pagination, since I don't have much hands on experience on that front. I came across this awesome Mongoose plugin called mongoose-paginate: https://github.com/edwardhotchkiss/mongoose-paginate. This plugin allowed me to paginate the query results really simply, but when I ran a few queries to test the pagination, I realized that there are multiple database entires that refer to the same Home, because the original entry was modified and a new entry was made (the only difference is in the ModTimestamp). I wanted to remove these duplicates because it may look like there are 3 returned entries to a query on a UI, but all 3 are actually referring to the same Home. I wanted to implement only unique entries in the returned array using the Mongoose .distinct() call. However, I discovered that the .paginate() method from the mongoose-pagination plugin did not allow a chained .distinct() call so I didn't get to implement it that way. I'm sure there is a way to do it with the plugin, I just did not discover it. In retrospect, I would have done the pagination with a Mongoose .aggregate() call with $group to make the entries unique and the $limit and $skip to do pagination. 
